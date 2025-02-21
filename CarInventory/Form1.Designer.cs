@@ -139,6 +139,7 @@
             this.Controls.Add(this.makeInput);
             this.Controls.Add(this.yearInput);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Inventory";
             this.ResumeLayout(false);
             this.PerformLayout();
