@@ -20,7 +20,7 @@ namespace CarInventory
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string year = yearInput.Text;   
+            string year = yearInput.Text;
             string make = makeInput.Text;
             string colour = colourInput.Text;
             string mileage = mileageInput.Text;
@@ -31,14 +31,39 @@ namespace CarInventory
             yearInput.Text = makeInput.Text = colourInput.Text = mileageInput.Text = "";
             yearInput.Focus();
 
+            DisplayCars();
+
+        }
+
+        private void DisplayCars()
+        {
             outputLabel.Text = "";
 
             for (int i = 0; i < cars.Count; i++)
             {
                 outputLabel.Text += $"{cars[i].year} - {cars[i].make}, {cars[i].colour}: {cars[i].mileage}\n";
             }
+        }
 
-           
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            string makeRemove = makeInput.Text;
+
+            for (int i = 0; i < cars.Count; i++)
+            {
+                if (cars[i].make == makeRemove)
+                {
+                    outputLabel.Text = $"{makeRemove} was removed";
+                    cars.RemoveAt(i);
+                    return;
+                }
+            }
+
+            yearInput.Text = makeInput.Text = colourInput.Text = mileageInput.Text = "";
+            yearInput.Focus();
+
+           DisplayCars() ;
+
         }
     }
 }
